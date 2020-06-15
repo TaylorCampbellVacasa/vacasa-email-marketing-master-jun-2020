@@ -1,0 +1,59 @@
+<heml>
+
+	<head>
+		<preview>Mix things up at a remote work spot near you.</preview>
+
+		<!-- inject-style src="src/CSS/base.css" -->
+		<!-- inject-style src="src/CSS/header.css" -->
+		<!-- inject-style src="src/CSS/cta.css" -->
+		<!-- inject-style src="src/CSS/search.css" -->
+		<!-- inject-style src="src/CSS/vacasa-banner-v3.css" -->
+		<!-- inject-style src="src/CSS/footer.css" -->
+		<!-- inject-style src="src/CSS/buttons.css" -->
+		<!-- inject-style src="src/CSS/basic-card.css" -->
+		<!-- inject-style src="src/CSS/mobile-app.css" -->
+		<!-- inject-style src="src/CSS/fourbox.css" -->
+		<!-- inject-style src="src/CSS/reservation-details.css" -->
+		<!-- inject-style src="src/CSS/header-white.css" -->
+		<!-- inject-style src="src/CSS/email-body.css" -->
+		<!-- inject-style src="src/CSS/section.css" -->
+		<!-- inject-style src="src/CSS/typography.css" -->
+	</head>
+
+	<body>
+
+		{{> header }}
+
+		{{> cta-image-header-message-btn image=unit_1_image name=unit_1_name url=unit_1_url utm=utm }}
+
+		<container>
+			<row>
+				<column class="card-container-left" large="6" small="12">
+					{{> basic-card-1 }}
+				</column>
+				<column class="card-container-right" large="6" small="12">
+					{{> basic-card-2 }}
+				</column>
+			</row>
+			<row>
+				<column class="card-container-left" large="6" small="12">
+					{{> basic-card-3 }}
+				</column>
+				<column class="card-container-right" large="6" small="12">
+					{{> basic-card-4 }}
+				</column>
+			</row>
+			<row>
+				<!--pad-row-->
+				<column class="padding-b-large"></column>
+				<column></column>
+			</row>
+		</container>
+
+
+		{{> search }}
+
+
+		{{> vacasa-footer-devonly-nosend }}
+	</body>
+</heml>
