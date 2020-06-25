@@ -1,59 +1,76 @@
 <heml>
 
 	<head>
-		<preview>Mix things up at a remote work spot near you.</preview>
+		<preview>Explore monthly vacation rentals just a drive away.</preview>
+		<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap" rel="stylesheet">
 
 		<!-- inject-style src="src/CSS/base.css" -->
-		<!-- inject-style src="src/CSS/header.css" -->
-		<!-- inject-style src="src/CSS/cta.css" -->
-		<!-- inject-style src="src/CSS/search.css" -->
-		<!-- inject-style src="src/CSS/vacasa-banner-v3.css" -->
-		<!-- inject-style src="src/CSS/footer.css" -->
-		<!-- inject-style src="src/CSS/buttons.css" -->
-		<!-- inject-style src="src/CSS/basic-card.css" -->
-		<!-- inject-style src="src/CSS/mobile-app.css" -->
-		<!-- inject-style src="src/CSS/fourbox.css" -->
-		<!-- inject-style src="src/CSS/reservation-details.css" -->
-		<!-- inject-style src="src/CSS/header-white.css" -->
-		<!-- inject-style src="src/CSS/email-body.css" -->
-		<!-- inject-style src="src/CSS/section.css" -->
-		<!-- inject-style src="src/CSS/typography.css" -->
 	</head>
 
 	<body>
+		<!-- raw-helper -->{{#each data}}
+			<!-- /raw-helper -->
 
-		{{> header }}
+			{{> header }}
 
-		{{> cta-image-header-message-btn image=unit_1_image name=unit_1_name url=unit_1_url utm=utm }}
+			{{> header-white-btn }}
 
-		<container>
-			<row>
-				<column class="card-container-left" large="6" small="12">
-					{{> basic-card-1 }}
-				</column>
-				<column class="card-container-right" large="6" small="12">
-					{{> basic-card-2 }}
-				</column>
+			{{> hero image="https://vacasa-units.imgix.net/1933154.jpg" }}
+
+			{{> hero-2 image="https://vacasa-units.imgix.net/1933154.jpg" }}
+
+			{{> hero-blue }}
+
+			{{> hero-blue-2 }}
+
+
+			<container>
+				<row class="pad-b pad-t-lrg">
+					<column class="hero gutter txt-l">
+						<h2>
+							Head south for fun and sun
+						</h2>
+					</column>
+				</row>
+				<row>
+					<column class="card-container-left" large="6" small="12">
+						{{> basic-card-1 }}
+					</column>
+					<column class="card-container-right" large="6" small="12">
+						{{> basic-card-2 }}
+					</column>
+				</row>
+				<row>
+					<column class="card-container-left" large="6" small="12">
+						{{> basic-card-3 }}
+					</column>
+					<column class="card-container-right" large="6" small="12">
+						{{> basic-card-4 }}
+					</column>
+				</row>
+				<row>
+					<!--pad-row-->
+					<column class="pad-b-lrg"></column>
+					<column></column>
+				</row>
+			</container>
+			<!-- raw-helper -->
+
+			</column>
 			</row>
-			<row>
-				<column class="card-container-left" large="6" small="12">
-					{{> basic-card-3 }}
-				</column>
-				<column class="card-container-right" large="6" small="12">
-					{{> basic-card-4 }}
-				</column>
-			</row>
-			<row>
-				<!--pad-row-->
-				<column class="padding-b-large"></column>
-				<column></column>
-			</row>
-		</container>
+			</container>
+
+			<container>
+				<row>
+					<column class="pad-b">
+						<!--pad-col-->
+					</column>
+				</row>
+			</container>
+
+		{{/each}}<!-- /raw-helper -->
 
 
-		{{> search }}
-
-
-		{{> vacasa-footer-devonly-nosend }}
+		{{> vacasa-footer }}
 	</body>
 </heml>

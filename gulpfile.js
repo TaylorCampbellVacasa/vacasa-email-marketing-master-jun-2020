@@ -9,12 +9,13 @@ const styleInject = require("gulp-style-inject");
 const htmlmin = require("gulp-htmlmin");
 const size = require("gulp-size");
 const replace = require("gulp-string-replace");
+const remove = require("gulp-email-remove-unused-css");
+const util = require("handlebars-utils");
+
+handlebarsfn.Handlebars.registerHelper("date", require("helper-date"));
 
 function CSS() {
-  return gulp
-    .src("temp/*.html")
-    .pipe(styleInject())
-    .pipe(gulp.dest("./temp"));
+  return gulp.src("temp/*.html").pipe(styleInject()).pipe(gulp.dest("./temp"));
 }
 
 function heml(cb) {
@@ -25,7 +26,7 @@ function heml(cb) {
     beautify: {}, // config passed to js-beautify html method
     elements: [
       // any custom elements you want to use
-    ]
+    ],
   };
 
   hemlfn(fs.readFileSync("temp/temp.html", "utf8"), options).then(
@@ -42,13 +43,13 @@ function heml(cb) {
           );
         }
       }
-      fs.writeFile("dist/index.html", html, err => {
+      fs.writeFile("dist/index.html", html, (err) => {
         // throws an error, you could also catch it here
         if (err) throw err;
       });
+      cb();
     }
   );
-  cb();
 }
 
 function handlebars(cb) {
@@ -57,10 +58,10 @@ function handlebars(cb) {
       ignorePartials: true,
       batch: ["./src/partials"],
       helpers: {
-        "raw-helper": function(options) {
+        "raw-helper": function (options) {
           return options.fn();
         },
-        each: function(context, options) {
+        each: function (context, options) {
           var ret = "";
 
           for (var i = 0, j = context.length; i < j; i++) {
@@ -68,8 +69,49 @@ function handlebars(cb) {
           }
 
           return ret;
-        }
-      }
+        },
+        or: function (/* any, any, ..., options */) {
+          var len = arguments.length - 1;
+          var options = arguments[len];
+          var val = false;
+
+          for (var i = 0; i < len; i++) {
+            if (arguments[i]) {
+              val = true;
+              break;
+            }
+          }
+          return util.value(val, this, options);
+        },
+        and: function () {
+          var len = arguments.length - 1;
+          var options = arguments[len];
+          var val = true;
+
+          for (var i = 0; i < len; i++) {
+            if (!arguments[i]) {
+              val = false;
+              break;
+            }
+          }
+
+          return util.value(val, this, options);
+        },
+        eq: function (a, b, options) {
+          if (arguments.length === 2) {
+            options = b;
+            b = options.hash.compare;
+          }
+          return util.value(a === b, this, options);
+        },
+        isnt: function (a, b, options) {
+          if (arguments.length === 2) {
+            options = b;
+            b = options.hash.compare;
+          }
+          return util.value(a != b, this, options);
+        },
+      },
     };
 
   return gulp
@@ -81,7 +123,7 @@ function handlebars(cb) {
 
 function server(cb) {
   browserSync.init({
-    server: `dist/`
+    server: `dist/`,
   });
   cb();
 }
@@ -92,7 +134,8 @@ function reload(cb) {
 }
 
 function watch() {
-  gulp.watch("src/**/*.*", gulp.series(handlebars, CSS, heml, reload));
+  var options = {};
+  gulp.watch("src/**/*.*", options, gulp.series(handlebars, CSS, heml, reload));
 }
 
 function minify() {
@@ -100,7 +143,26 @@ function minify() {
     .src("dist/index.html")
     .pipe(
       htmlmin({
-        collapseWhitespace: true
+        collapseWhitespace: true,
+      })
+    )
+    .pipe(gulp.dest("dist/"));
+}
+
+function removeCSS() {
+  return gulp
+    .src("dist/index.html")
+    .pipe(
+      remove({
+        whitelist: [
+          ".ExternalClass",
+          ".ReadMsgBody",
+          ".yshortcuts",
+          ".Mso*",
+          ".maxwidth-apple-mail-fix",
+          "#outlook",
+          ".module-*",
+        ],
       })
     )
     .pipe(gulp.dest("dist/"));
@@ -108,10 +170,7 @@ function minify() {
 
 function fileSize() {
   console.log("Size after build:");
-  return gulp
-    .src("dist/index.html")
-    .pipe(size())
-    .pipe(gulp.dest("dist/"));
+  return gulp.src("dist/index.html").pipe(size()).pipe(gulp.dest("dist/"));
 }
 
 function rawOnEmail() {
@@ -167,6 +226,13 @@ function rawRenderDesignPartials() {
     .pipe(gulp.dest("src/data/"));
 }
 
+function fixInlineAll() {
+  return gulp
+    .src(["dist/index.html"])
+    .pipe(replace(/\* {/, "h1, h2, h3, p, span, a {"))
+    .pipe(gulp.dest("dist/"));
+}
+
 exports.template = gulp.series(
   rawOnEmail,
   rawOnPartials,
@@ -179,6 +245,26 @@ exports.design = gulp.series(
   rawRenderDesignPartials
 );
 
-exports.build = gulp.series(handlebars, CSS, heml, minify, fileSize);
+exports.build = gulp.series(
+  handlebars,
+  CSS,
+  heml,
+  minify,
+  removeCSS,
+  fixInlineAll,
+  fileSize
+);
+
+exports.nsBuild = gulp.series(
+  handlebars,
+  CSS,
+  removeCSS,
+  fixInlineAll,
+  fileSize
+);
+
+exports.prodFin = gulp.series(minify, removeCSS, fixInlineAll, fileSize);
+
+exports.oldBuild = gulp.series(handlebars, CSS, heml, minify, fileSize);
 
 exports.develop = gulp.series(handlebars, CSS, heml, server, watch);
