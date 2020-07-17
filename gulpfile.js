@@ -168,6 +168,25 @@ function removeCSS() {
     .pipe(gulp.dest("dist/"));
 }
 
+function removeCSSns() {
+  return gulp
+    .src("temp/temp.html")
+    .pipe(
+      remove({
+        whitelist: [
+          ".ExternalClass",
+          ".ReadMsgBody",
+          ".yshortcuts",
+          ".Mso*",
+          ".maxwidth-apple-mail-fix",
+          "#outlook",
+          ".module-*",
+        ],
+      })
+    )
+    .pipe(gulp.dest("temp/"));
+}
+
 function fileSize() {
   console.log("Size after build:");
   return gulp.src("dist/index.html").pipe(size()).pipe(gulp.dest("dist/"));
@@ -233,6 +252,13 @@ function fixInlineAll() {
     .pipe(gulp.dest("dist/"));
 }
 
+function fixInlineAllns() {
+  return gulp
+    .src(["temp/temp.html"])
+    .pipe(replace(/\* {/, "h1, h2, h3, p, span, a {"))
+    .pipe(gulp.dest("temp/"));
+}
+
 exports.template = gulp.series(
   rawOnEmail,
   rawOnPartials,
@@ -258,8 +284,8 @@ exports.build = gulp.series(
 exports.nsBuild = gulp.series(
   handlebars,
   CSS,
-  removeCSS,
-  fixInlineAll,
+  removeCSSns,
+  fixInlineAllns,
   fileSize
 );
 
