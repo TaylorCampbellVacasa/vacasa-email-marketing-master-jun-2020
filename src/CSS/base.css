@@ -18,7 +18,7 @@ body {
 }
 
 a {
-  color: #003349 !important;
+  color: #0078ab !important;
   text-decoration: none;
 }
 
@@ -634,51 +634,28 @@ table.button {
 
 /* Marketing Footer Styles */
 
-.vacasa-banner-container {
-  padding-top: 24px;
-  padding-bottom: 24px;
-}
-
-h3.vacasa-banner {
-  margin: 0;
+p.app-title{
   color: #2c3439;
-  font-size: 28px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-family: "Nunito Sans", Arial, sans-serif;
   font-weight: 600;
   letter-spacing: -0.5px;
-  line-height: 36px;
+  line-height: 23px;
 }
-
-p.vacasa-banner {
-  max-width: 500px;
-  margin: 0;
-  height: auto;
-  color: #000000;
-  font-size: 16px;
+p.app-description{
+  color: #2c3439;
+  font-size: 15px;
   font-family: "Nunito Sans", Arial, sans-serif;
-  font-weight: normal;
-  line-height: 26px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 21px;
 }
-
-a.vacasa-banner {
-  color: #003349;
-}
-
-.unsubscribe-preferences-container {
-  padding-top: 32px;
-  padding-bottom: 8px;
-}
-
-.social-icon {
-  display: inline;
-}
-
-.si-pad-r {
-  padding-right: 36px;
+a.app-link {
+  color: #0078AB !important;
 }
 
 .unsub-pref-link {
-  color: #707579;
+  color: #6D7D87 !important;
   font-size: 14px;
   font-family: "Nunito Sans", Arial, sans-serif;
   line-height: 20px;
@@ -687,31 +664,8 @@ a.vacasa-banner {
 }
 
 .unsub-link {
-  color: #707579 !important;
-  font-weight: 700;
-}
-
-@media only screen and (max-width: 600px) {
-  h3.vacasa-banner {
-    font-size: 21px !important;
-    letter-spacing: -0.2px !important;
-    line-height: 28px !important;
-  }
-
-  .vacasa-banner span {
-    font-size: 14px !important;
-    font-weight: normal !important;
-    line-height: 22px !important;
-  }
-
-  .vacasa-banner-logo {
-    max-width: 124px !important;
-  }
-
-  .unsub-link {
-    font-size: 12px !important;
-    line-height: 20px;
-  }
+  color: #6D7D87; !important;
+  font-weight: 400;
 }
 
 /* Basic Card Styles */
