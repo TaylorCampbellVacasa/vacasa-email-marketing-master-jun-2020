@@ -18,7 +18,7 @@ body {
 }
 
 a {
-  color: #003349 !important;
+  color: #0078ab !important;
   text-decoration: none;
 }
 
@@ -160,16 +160,6 @@ a {
   body {
     padding-top: 0 !important;
   }
-
-  .card-header {
-    font-size: 18px !important;
-    line-height: 22px !important;
-  }
-  .card-img {
-    height: unset !important;
-    max-height: unset !important;
-    overflow: hidden;
-  }
 }
 
 /* typography styles */
@@ -307,18 +297,6 @@ h2 {
   line-height: 36px;
 }
 
-.card-header {
-  font-size: 20px;
-  font-family: "Nunito Sans", Arial, sans-serif;
-  line-height: 30px;
-}
-
-.card-img {
-  height: 100%;
-  max-height: 240px;
-  overflow: hidden;
-}
-
 .sub {
   font-size: 21px;
   letter-spacing: -0.2px;
@@ -340,11 +318,18 @@ h2 {
 }
 
 .body-text {
-  color: #373737;
+  color: #000000;
   font-family: "Nunito Sans", Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.body-text {
+  font-size: 16px;
   font-weight: 400;
   line-height: 26px;
+  color: #373737;
 }
 
 .info-text {
@@ -403,10 +388,6 @@ h2 {
   .blu-header .tagline {
     display: none !important;
   }
-
-  .left-header {
-    padding: 24px 8px 16px 8px !important;
-  }
 }
 
 @media only screen and (max-width: 350px) {
@@ -425,7 +406,7 @@ h2 {
 }
 
 .left-header {
-  padding: 24px 8px 0 8px;
+  padding: 20px 20px 20px 24px;
 }
 
 .right-header {
@@ -532,7 +513,7 @@ table.button {
   font-family: "Nunito Sans", Arial, sans-serif;
   font-weight: 700;
   line-height: 24px;
-  color: #ffffff;
+  color: #0078ab;
   text-decoration: none;
   border-radius: 4px;
   width: 100% !important;
@@ -616,11 +597,11 @@ table.button {
   font-family: "Nunito Sans", Arial, sans-serif;
   font-weight: 700;
   line-height: 24px;
-  color: #0078ab;
+  color: #003349;
   text-decoration: none;
   border-radius: 4px;
   width: 100% !important;
-  border: 1px solid #0078ab;
+  border: 1px solid #003349;
   background-color: #fff;
   display: inline-block;
 }
@@ -631,53 +612,50 @@ table.button {
   border: none !important;
 }
 
-/* Marketing Footer Styles */
-
-.vacasa-banner-container {
-  padding-top: 24px;
-  padding-bottom: 24px;
-}
-
-h3.vacasa-banner {
-  margin: 0;
-  color: #2c3439;
-  font-size: 28px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  line-height: 36px;
-}
-
-p.vacasa-banner {
-  max-width: 500px;
-  margin: 0;
-  height: auto;
-  color: #000000;
+.secondary {
   font-size: 16px;
   font-family: "Nunito Sans", Arial, sans-serif;
-  font-weight: normal;
-  line-height: 26px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #0078ab;
+  text-decoration: none;
+  border-radius: 4px;
+  width: 100% !important;
+  border: 1px solid #0078ab;
+  background-color: #ffffff;
+  display: inline-block;
 }
 
-a.vacasa-banner {
-  color: #003349;
+.secondary * {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  border: none !important;
 }
 
-.unsubscribe-preferences-container {
-  padding-top: 0;
-  padding-bottom: 16px;
-}
+/* Marketing Footer Styles */
 
-.social-icon {
-  display: inline;
+p.app-title{
+  color: #2c3439;
+  font-size: 20px;
+  font-family: "Nunito Sans", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  line-height: 23px;
 }
-
-.si-pad-r {
-  padding-right: 36px;
+p.app-description{
+  color: #2c3439;
+  font-size: 15px;
+  font-family: "Nunito Sans", Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 21px;
+}
+a.app-link {
+  color: #0078AB !important;
 }
 
 .unsub-pref-link {
-  color: #707579;
+  color: #6D7D87 !important;
   font-size: 14px;
   font-family: "Nunito Sans", Arial, sans-serif;
   line-height: 20px;
@@ -686,31 +664,8 @@ a.vacasa-banner {
 }
 
 .unsub-link {
-  color: #707579 !important;
-  font-weight: 700;
-}
-
-@media only screen and (max-width: 600px) {
-  h3.vacasa-banner {
-    font-size: 21px !important;
-    letter-spacing: -0.2px !important;
-    line-height: 28px !important;
-  }
-
-  .vacasa-banner span {
-    font-size: 14px !important;
-    font-weight: normal !important;
-    line-height: 22px !important;
-  }
-
-  .vacasa-banner-logo {
-    max-width: 124px !important;
-  }
-
-  .unsub-link {
-    font-size: 12px !important;
-    line-height: 20px;
-  }
+  color: #6D7D87; !important;
+  font-weight: 400;
 }
 
 /* Basic Card Styles */
@@ -722,20 +677,6 @@ a.vacasa-banner {
 
   .card-container-right {
     padding: 0 24px 16px 24px !important;
-  }
-
-  .unit-card-name {
-    font-size: 18px !important;
-    font-weight: 400;
-    letter-spacing: -0.2px;
-    line-height: 20px;
-  }
-
-  .location-card-name {
-    font-size: 18px !important;
-    font-weight: 400;
-    letter-spacing: -0.2px;
-    line-height: 20px;
   }
 }
 
@@ -758,29 +699,12 @@ a.vacasa-banner {
   text-decoration: none;
 }
 
-.unit-card-city {
-  color: #707579;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.38px;
-  line-height: 10px;
-  text-transform: uppercase;
-  word-wrap: none;
-  margin: 0;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-  word-wrap: normal;
-  text-decoration: none;
-}
-
 .unit-card-image {
   -ms-interpolation-mode: bicubic;
   border: none;
   clear: both;
   display: block;
-  margin-bottom: 0px !important;
+  margin-bottom: 8px !important;
   outline: 0;
   text-decoration: none;
   width: auto;
@@ -804,20 +728,6 @@ a.vacasa-banner {
   word-wrap: normal;
 }
 
-.location-card-name {
-  margin: 0;
-  color: #2c3439 !important;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  letter-spacing: -0.2px;
-  line-height: 24px;
-  padding: 0;
-  text-align: left;
-  text-decoration: none;
-  word-wrap: normal;
-}
-
 .unit-card-attributes {
   color: #707579;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -836,15 +746,6 @@ a.vacasa-banner {
   font-family: "Nunito Sans", Arial, sans-serif;
   font-size: 14px !important;
   font-weight: 500;
-  margin-top: 0 !important;
-  padding: 0;
-  text-align: left;
-}
-.unit-card-resort {
-  margin: 0;
-  color: #000000;
-  font-family: "Nunito Sans", Arial, sans-serif;
-  font-size: 10px !important;
   margin-top: 0 !important;
   padding: 0;
   text-align: left;
